@@ -395,7 +395,7 @@ function updateLatex() {
     latex = `$ \\text{Ellipsoïde}$ <br>
     <br> $ -${Math.abs((Math.round(100*(5-t))/100)).toFixed(2)}x^2 - ${Math.abs((Math.round(100*(5-t))/100)).toFixed(2)}y^2 -  z^2 = - R^2$`
   }
-  if(Math.abs(t-6) <= 0.001){
+  if(t>5.99){
     latex = `$ \\text{Bol}$ <br>
     <br> $-x^2 - y^2 - z^2 = -R^2$`
   }

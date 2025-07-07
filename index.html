@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Earth Globe</title>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+      font-family: sans-serif;
+    }
+
+    #mainCanvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background: #111;
+    }
+
+    #ui {
+      position: absolute;
+      top: 1vh;
+      left: 1vw;
+      z-index: 10;
+      display: flex;
+      gap: 0.5vw;
+    }
+
+    #latexDisplay {
+      position: absolute;
+      top: 10vh;
+      left: 1vw;
+      color: white;
+      font-size: 2vw;
+      background: rgba(0,0,0,0.6);
+      padding: 1vw;
+      border-radius: 0.5vw;
+      z-index: 10;
+    }
+
+    button {
+      width: 4vw;
+      height: 4vw;
+      font-size: clamp(18px, 2vw, 36px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 1vw;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="mainCanvas"></canvas>
+
+  <div id="ui">
+    <button id="playPauseBtn"><span class="label">▶️</span></button>
+    <button id="resetBtn"><span class="label">🔄</span></button>
+    <button id="stepBackBtn"><span class="label">⏪</span></button>
+    <button id="stepForwardBtn"><span class="label">⏩</span></button>
+  </div>
+
+  <div id="latexDisplay">\( t = 0 \)</div>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      startup: {
+        typeset: false
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Main script -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
